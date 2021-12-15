@@ -14,9 +14,9 @@ Firmware_Diy_Core() {
 	Firmware_Format=AUTO
 	REGEX_Skip_Checkout="packages|buildinfo|sha256sums|manifest|kernel|rootfs|factory"
 
-	INCLUDE_AutoBuild_Features=true
+	INCLUDE_AutoBuild_Features=false
 	INCLUDE_DRM_I915=false
-	INCLUDE_Original_OpenWrt_Compatible=false
+	INCLUDE_Original_OpenWrt_Compatible=true
 }
 
 Firmware_Diy() {
