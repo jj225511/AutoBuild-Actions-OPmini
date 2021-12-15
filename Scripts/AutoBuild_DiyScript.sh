@@ -4,8 +4,8 @@
 
 Firmware_Diy_Core() {
 
-	Author=小碗儿数码
-	Author_URL=xiaowansm.taobao.com
+	Author=ZYZH
+	Author_URL=
 	Default_IP="192.168.5.1"
 	Banner_Message="Powered by AutoBuild-Actions"
 
