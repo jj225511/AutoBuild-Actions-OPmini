@@ -63,10 +63,10 @@ Firmware_Diy_Before() {
 	}
 	case "${TARGET_BOARD}" in
 	x86)
-		AutoBuild_Firmware="AutoBuild-${OP_REPO}-${TARGET_PROFILE}-${OP_VERSION}-BOOT-SHA256.FORMAT"
+		AutoBuild_Firmware="AutoBuild-ZYZH-${OP_REPO}-${TARGET_PROFILE}-${OP_VERSION}-BOOT-SHA256.FORMAT"
 	;;
 	*)
-		AutoBuild_Firmware="AutoBuild-${OP_REPO}-${TARGET_PROFILE}-${OP_VERSION}-SHA256.FORMAT"
+		AutoBuild_Firmware="AutoBuild-ZYZH-${OP_REPO}-${TARGET_PROFILE}-${OP_VERSION}-SHA256.FORMAT"
 	;;
 	esac
 
