@@ -173,7 +173,7 @@ jobs:
       if: env.UPLOAD_ARTIFACTS == 'true' && env.Result == 'true' && !cancelled()
       with:
         name: ${{ env.CONFIG_FILE }}_firmware_${{ env.Compile_Date }}
-        path: openwrt/bin/Firmware
+        path: openwrt/bin/targets/ramips/mt7621/
 
     - name: Upload bin to Artifacts
       uses: actions/upload-artifact@main
@@ -187,7 +187,7 @@ jobs:
       if: env.UPLOAD_RELEASES == 'true' && env.Result == 'true' && !cancelled()
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: openwrt/bin/Firmware/*
+        file: openwrt/bin/targets/ramips/mt7621/*
         file_glob: false
         tag: AutoUpdate
         tag_name: AutoUpdate
