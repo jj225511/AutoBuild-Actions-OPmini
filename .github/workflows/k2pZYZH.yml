@@ -58,22 +58,39 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
 
-    - name: Initialization Define Info
+    - name: Initialization Variables
       run: |
-        CONFIG_FILE=${{ env.CONFIG_FILE }}
-        DEFAULT_SOURCE=${{ env.DEFAULT_SOURCE }}
-        DELETE_USELESS_FILES=${{ env.DELETE_USELESS_FILES }}
-        echo "CONFIG_FILE=$CONFIG_FILE" >> $GITHUB_ENV
-        echo "DELETE_USELESS_FILES=$DELETE_USELESS_FILES" >> $GITHUB_ENV
-        [ ! -f "$GITHUB_WORKSPACE/Configs/$CONFIG_FILE" ] && {
-            echo "Config_File: [/Config/$CONFIG_FILE] is not detected!"
+        echo "Free space:"
+        df -h
+        if [ -n "${{ github.event.inputs.Tempoary_CONFIG }}" ]
+        then
+            if [ -f "$GITHUB_WORKSPACE/Configs/${{ github.event.inputs.Tempoary_CONFIG }}" ]
+            then
+                CONFIG_FILE=${{ github.event.inputs.Tempoary_CONFIG }}
+            else
+                CONFIG_FILE=${{ env.CONFIG_FILE }}
+            fi
+        else
+            CONFIG_FILE=${{ env.CONFIG_FILE }}
+        fi
+        if [ ! -f "$GITHUB_WORKSPACE/Configs/$CONFIG_FILE" ]
+        then
+            echo "CONFIG_FILE: [/Config/$CONFIG_FILE] is not detected !"
             exit 1
-        }
-        export REPO_URL="https://github.com/$(echo $DEFAULT_SOURCE | cut -d \: -f 1)"
-        export REPO_BRANCH=$(echo $DEFAULT_SOURCE | cut -d \: -f 2)
-        [ -z $REPO_BRANCH ] && REPO_BRANCH=master
+        else
+            echo "CONFIG_FILE: [/Config/$CONFIG_FILE]"
+            echo "CONFIG_FILE=$CONFIG_FILE" >> $GITHUB_ENV
+        fi
+        if [ -n "${{ github.event.inputs.Tempoary_IP }}" ]
+        then
+            echo "Tempoary_IP=${{ github.event.inputs.Tempoary_IP }}" >> $GITHUB_ENV
+        fi
+        REPO_URL="https://github.com/$(echo ${{ env.DEFAULT_SOURCE }} | cut -d \: -f 1)"
+        REPO_BRANCH=$(echo ${{ env.DEFAULT_SOURCE }} | cut -d \: -f 2)
         echo "REPO_URL=$REPO_URL" >> $GITHUB_ENV
         echo "REPO_BRANCH=$REPO_BRANCH" >> $GITHUB_ENV
+        echo "Compile_Date=$(date +%Y%m%d%H%M)" >> $GITHUB_ENV
+        echo "Display_Date=$(date +%Y/%m/%d)" >> $GITHUB_ENV
 
     - name: Initialization Environment
       env:
