@@ -190,8 +190,6 @@ jobs:
         file: openwrt/bin/targets/ramips/mt7621/*
         file_glob: false
         tag: AutoUpdate
-        tag_name: AutoUpdate
-        body_path: Release_info
         overwrite: true
         
     - name: Download Github Release API
