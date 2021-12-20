@@ -54,4 +54,5 @@ Firmware_Diy() {
 	esac
         sed -i 's/OpenWrt/ZYZH-Router/g' package/base-files/files/bin/config_generate
 	sed -i 's/OpenWrt/ZYZH-Router/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+	sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' ./feeds/luci/collections/luci/Makefile
 }
