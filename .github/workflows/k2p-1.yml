@@ -181,16 +181,6 @@ jobs:
       with:
         name: ${{ env.CONFIG_FILE }}_bin_${{ env.Compile_Date }}
         path: openwrt/bin
-
-    - name: Upload Firmware to Github Release
-      uses: svenstaro/upload-release-action@v2
-      if: env.UPLOAD_RELEASES == 'true' && env.Result == 'true' && !cancelled()
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: openwrt/bin/targets/ramips/mt7621/*
-        file_glob: false
-        tag: AutoUpdate
-        overwrite: true
         
     - name: Download Github Release API
       if: env.UPLOAD_RELEASES == 'true' && env.Result == 'true' && !cancelled()
