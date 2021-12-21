@@ -177,16 +177,16 @@ jobs:
         name: ${{ env.CONFIG_FILE }}_bin_${{ env.Compile_Date }}
         path: openwrt/bin
 
-    - name: Upload Firmware to Github Releases
-      uses: softprops/action-gh-release@v1
-      if: env.UPLOAD_RELEASES == 'true' && env.Compile_Result == 'true' && !cancelled()
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        file: openwrt/bin/Firmware/*
-        file_glob: true
-        tag: AutoUpdate
-        overwrite: true
+#    - name: Upload Firmware to Github Releases
+#      uses: softprops/action-gh-release@v1
+#      if: env.UPLOAD_RELEASES == 'true' && env.Compile_Result == 'true' && !cancelled()
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      with:
+#        file: openwrt/bin/Firmware/*
+#        file_glob: true
+#        tag: AutoUpdate
+#        overwrite: true
         
     - name: Download Github Release API
       if: env.UPLOAD_RELEASES == 'true' && env.Result == 'true' && !cancelled()
