@@ -39,12 +39,17 @@ env:
   UPLOAD_RELEASES: true
 # 上传固件到 Github Artifacts
   UPLOAD_ARTIFACTS: true
+  UPLOAD_BIN_DIR: true
+  UPLOAD_FIRMWARE: true
+  UPLOAD_COWTRANSFER: true
+  UPLOAD_WETRANSFER: false
 # 上传 bin 文件夹到 Github Artifacts
   UPLOAD_BIN_ARTIFACTS: true
 # 删除无用文件以增加编译空间
   DELETE_USELESS_FILES: true
 # 删除早期的 workflow 任务
   DELETE_OLD_WORKFLOW: true
+  TZ: Asia/Shanghai
 ### 结束
 
 jobs:
